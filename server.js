@@ -3,6 +3,8 @@ import 'dotenv/config';
 
 //Importer document de routes externe
 import routerExterne from './routes/routeurExterne.js';
+import path from 'path';
+const __dirname = path.resolve();
 
 // Importer les fichiers et librairies
 import express, { json, urlencoded } from 'express';
@@ -20,7 +22,7 @@ app.use(compression());
 app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: false }));
-app.use(express.static('public'));
+app.use(express.static('/public'));
 
 
 //Charger les routes du fichier externe "routes"

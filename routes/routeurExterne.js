@@ -1,13 +1,17 @@
 import { Router } from 'express';
+import path from 'path';
+
+const __dirname = path.resolve();
+
 
 const router = Router();
 
 router.get('/', (request, response) => {
-    response.status(200).send('<h1>Good</h1>');
+    response.sendFile(path.join(__dirname, './views/index.html'));
 });
 
-router.get('/account', (request, response) => {
-    console.log("comptes");
+router.get('/comptes', (request, response) => {
+    response.sendFile(path.join(__dirname, './views/comptes.html'));
 });
 
 router.post('/comptes', (request, response) => {
@@ -23,7 +27,7 @@ router.delete('/comptes/:id', (request, response) => {
 });
 
 router.get('/livres', (request, response) => {
-    console.log("livres");
+    response.sendFile(path.join(__dirname, './views/livres.html'));
 });
 
 router.post('/livres', (request, response) => {
@@ -39,7 +43,7 @@ router.delete('/livres/:id', (request, response) => {
 });
 
 router.get('/emprunts', (request, response) => {
-    console.log("emprunts");
+    response.sendFile(path.join(__dirname, './views/emprunts.html'));
 });
 
 router.post('/emprunts', (request, response) => {
@@ -53,6 +57,5 @@ router.put('/emprunts/:id', (request, response) => {
 router.delete('/emprunts/:id', (request, response) => {
     console.log("emprunts");
 });
-
 
 export default router;
