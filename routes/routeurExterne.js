@@ -10,6 +10,10 @@ router.get('/', (request, response) => {
     response.sendFile(path.join(__dirname, './views/index.html'));
 });
 
+router.get('/index', (request, response) => {
+    response.sendFile(path.join(__dirname, './views/index.html'));
+});
+
 router.get('/comptes', (request, response) => {
     response.sendFile(path.join(__dirname, './views/comptes.html'));
 });
@@ -57,5 +61,14 @@ router.put('/emprunts/:id', (request, response) => {
 router.delete('/emprunts/:id', (request, response) => {
     console.log("emprunts");
 });
+
+router.get('/login', (request, response) => {
+    response.sendFile(path.join(__dirname, './views/login.html'));
+});
+
+router.get('/contact', (request, response) => {
+    response.sendFile(path.join(__dirname, './views/contact.html'));
+});
+
 
 export default router;
