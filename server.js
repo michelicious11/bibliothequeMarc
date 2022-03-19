@@ -22,7 +22,7 @@ app.use(compression());
 app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: false }));
-app.use(express.static('/public'));
+app.use(express.static(__dirname));
 
 
 //Charger les routes du fichier externe "routes"
