@@ -1,10 +1,23 @@
+import { Model, DataTypes } from 'sequelize';
+import sequelize from './../database/connexion-config.js';
 
+class Emprunt extends Model {}
+    Emprunt.init({
+        compte: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        date_emprunt: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        date_retour: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+    }, {
+        sequelize,
+        modelName: 'emprunt'
+    })
 
-export class Emprunt {
-    constructor(livre, compte, date_emprunt, date_retour) {
-        this.livre = livre;
-        this.compte = compte;
-        this.date_emprunt = date_emprunt;
-        this.date_retour = date_retour;
-    }
-}
+    export default Emprunt

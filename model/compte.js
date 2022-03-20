@@ -1,13 +1,32 @@
+import { Model, DataTypes } from 'sequelize';
+import sequelize from './../database/connexion-config.js';
 
+class Compte extends Model {}
 
-export class Compte {
-    constructor(prenom, nom, mot_de_passe, email, adresse) {
-        this.prenom = prenom;
-        this.nom = nom;
-        this.mot_de_passe = mot_de_passe;
-        this.email = email;
-        this.ville = ville;
-        this.adresse = adresse;
-        this.province = province;
-    }
-}
+Compte.init({
+        prenom: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        nom: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        mot_de_passe: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        adresse: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+}, {
+    sequelize,
+    modelName: 'compte'
+})
+
+export default Compte
