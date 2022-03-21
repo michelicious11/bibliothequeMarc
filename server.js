@@ -2,7 +2,7 @@
 import 'dotenv/config';
 
 //Importer document de routes externe
-import routerExterne from './routes/routeurExterne.js';
+import routes from './routes/routes.js';
 import path from 'path';
 const __dirname = path.resolve();
 import exphbs from 'express-handlebars';
@@ -36,7 +36,7 @@ app.use(express.static(__dirname));
 
 
 //Charger les routes du fichier externe "routes"
-app.use(routerExterne);
+app.use(routes);
 
 // Renvoyer une erreur 404 pour les routes non définies
 app.use(function (request, response) {

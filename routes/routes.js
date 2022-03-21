@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import path from 'path';
-import sequelize from './../database/connexion-config.js';
-import Emprunt from './../model/emprunt.js';
-import Compte from './../model/compte.js';
-import Livre from './../model/livre.js';
-const __dirname = path.resolve()
+import sequelize from '../database/connexion-config.js';
+import Emprunt from '../model/emprunt.js';
+import Compte from '../model/compte.js';
+import Livre from '../model/livre.js';
+import { validateEmail, validatePassword } from './../controller/validationLoginController.js';
 const router = Router();
 ;
 
@@ -26,8 +26,8 @@ Operations CRUD de 'comptes'
 */
 router.route('/comptes') 
     //Requete GET pour rediriger vers la page html 'comptes'
-    .get((req, res) => {
-        res.render("comptes", {layout: 'index'});
+    .get( async (req, res) => {
+        res.render("comptes", {layout: 'index'})
     })
     //Requete POST pour enregister un nouveau compte
     .post( async (req, res) => {
@@ -129,10 +129,22 @@ router.route('/contact')
         res.render("contact", {layout: 'index'});
     })
 
-    router.route('/login') 
-    //Requete GET pour rediriger vers la page html 'livres'
-    .get((req, res) => {
-        res.render("login", {layout: 'index'});
-    })
 
-export default router;
+// Route page Login
+router.route('/login')
+    .get((req, res) => {
+        res.render("login", {layout: 'index', title: 'Login',
+        user: `request?.user?`,
+        admin: `request?.user?.id_type_utilisateur > 9000`});
+    })
+    .post(() => { validatePassword(); })
+
+
+// route d'authentification pour la déconnexion
+router.post('./deconnexion', async (request, response) => {
+    request.logout();
+    response.redirect('/');
+})
+
+
+export default router

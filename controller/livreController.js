@@ -1,4 +1,5 @@
 import connectionPromise from './connection.js';
+import Livre from './../model/livre';
 
 export const getLivres = async () => {
     // Attendre que la connexion à la base de données

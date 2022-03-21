@@ -50,7 +50,8 @@
 }
 
 /*
-Page thématique
+
+Page livres
 */
 .alphabet{
     padding: 5px 40px 40px 40px;
@@ -59,6 +60,7 @@ Page thématique
     font-size: 2em;
     text-align: center;
 }
+
 .search{
     display: flex;
     flex-direction: row;
